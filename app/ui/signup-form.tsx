@@ -51,6 +51,7 @@ export function SignupForm() {
       <button type="submit" className="border p-3">
         Sign Up
       </button>
+      {pending ? <p>Loading...</p> : null}
     </form>
   )
 }
