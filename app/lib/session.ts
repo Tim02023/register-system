@@ -3,6 +3,7 @@ import { SignJWT, jwtVerify } from 'jose'
 import { SessionPayload } from '@/app/lib/definitions'
 import { cookies } from 'next/headers'
 import { createSessionInDB } from '../actions/session'
+import { redirect } from 'next/navigation'
 
 const secretKey =
   process.env.SESSION_SECRET || 'J/DnovBuYDPSdgKkmYPH+seXNcpnsnVRsFig2tqqssg='
@@ -65,4 +66,5 @@ export async function updateSession() {
 export async function deleteSession() {
   const cookieStore = await cookies()
   cookieStore.delete('sessionT')
+  redirect('/')
 }

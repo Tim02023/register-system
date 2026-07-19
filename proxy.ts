@@ -11,7 +11,7 @@ export default async function proxy(req: NextRequest) {
 
   const cookie = (await cookies()).get('sessionT')?.value
   const session = await decrypt(cookie)
-
+    console.log('Session cookie:', cookie)
   if (isProtectedRoute && !session?.userId) {
     return NextResponse.redirect(new URL('/signup', req.nextUrl))
   }
