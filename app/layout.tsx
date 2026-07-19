@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Home, LayoutDashboard, User } from "lucide-react";
+import { Home, User } from "lucide-react";
 import Link from "next/link";
 import { Toaster } from '@/components/ui/sonner'
-import { verifySession } from "./lib/dal";
-import { SessionProvider } from "./context/session-context";
 import DashboardLink from "./ui/dashboard-link";
 
 const geistSans = Geist({
