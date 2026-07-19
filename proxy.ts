@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { decrypt } from './app/lib/session'
 
 const protectedRoutes = ['/dashboard']
-const publicRoutes = ['/login', '/signup', '/']
+const publicRoutes = ['/signup', '/']
 export default async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.includes(path)
