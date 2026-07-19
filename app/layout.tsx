@@ -37,9 +37,7 @@ export default function RootLayout({
             <Home />
           </Link>
           {/* Add avatar if user is logged in, otherwise show login/signup links */}
-          <Link href='/signup'>
-            <User />
-          </Link>
+          
           <DashboardLink/>
         </header>
         <Toaster />
