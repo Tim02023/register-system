@@ -8,9 +8,10 @@ import { redirect } from 'next/navigation'
 export const verifySession = cache(async () => {
   const cookie = (await cookies()).get('sessionT')?.value
   const session = await decrypt(cookie)
+  if (!session) return null
   if (!session?.userId) {
     redirect('/signup')
   }
 
   return { isAuth: true, userId: session?.userId }
-})
+}) 
