@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { User } from "lucide-react";
+import { Home, LayoutDashboard, User } from "lucide-react";
 import Link from "next/link";
+import { Toaster } from '@/components/ui/sonner'
+import { verifySession } from "./lib/dal";
+import { SessionProvider } from "./context/session-context";
+import DashboardLink from "./ui/dashboard-link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +34,18 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="bg-white border-b border-gray-200 p-4">
+        <header className="flex items-center gap-10 bg-white border-b border-gray-200 p-4">
+          <Link href='/'>
+            <Home />
+          </Link>
+          {/* Add avatar if user is logged in, otherwise show login/signup links */}
           <Link href='/signup'>
             <User />
           </Link>
+          <DashboardLink/>
         </header>
-        {children}
+        <Toaster />
+          {children}
       </body>
     </html>
   )

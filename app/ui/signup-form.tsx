@@ -1,10 +1,16 @@
 'use client'
 import { signup } from '@/app/actions/auth'
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
+import { toast } from 'sonner'
 
 export function SignupForm() {
     const [state, action, pending] = useActionState(signup, undefined)
-  
+  useEffect(() => {
+    if (state?.message) {
+      toast.success(state.message)
+    }
+  }, [state?.message])
+
   return (
     <form action={action}>
       <div>
