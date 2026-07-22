@@ -11,18 +11,23 @@ export default async function proxy(req: NextRequest) {
 
   const cookie = (await cookies()).get('sessionT')?.value
   const session = await decrypt(cookie)
-    console.log('Session cookie:', cookie)
+  console.log('Session cookie:', cookie)
+  //  if (isPublicRoute && !session?.userId) {
+  //    return NextResponse.redirect(new URL('/', req.nextUrl))
+  // }
+  
   if (isProtectedRoute && !session?.userId) {
     return NextResponse.redirect(new URL('/signup', req.nextUrl))
   }
 
-  // if (
-  //   isPublicRoute &&
-  //   session?.userId &&
-  //   !req.nextUrl.pathname.startsWith('/dashboard')
-  // ) {
-  //   return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
-  // }
+ 
+  if (
+    isPublicRoute &&
+    session?.userId &&
+    !req.nextUrl.pathname.startsWith('/dashboard')
+  ) {
+    return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
+  }
   return NextResponse.next()
 }
 export const config = {

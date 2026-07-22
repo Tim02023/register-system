@@ -1,8 +1,8 @@
-import { getUser } from "../lib/dto"
+import { getUser } from '../../lib/dto'
 
 export default async function Dashboard() {
   const user = await getUser()
-  if(!user) {
+  if (!user) {
     console.log('User not found. Please log in again.')
     return null
   }

@@ -1,7 +1,7 @@
+import LogoutButton from '@/app/(auth)/ui/logout-btn'
+import { getUser } from '@/app/lib/dto'
 import { LayoutDashboard, User } from 'lucide-react'
 import Link from 'next/link'
-import { getUser } from '../lib/dto'
-import LogoutButton from './logout-btn'
 
 const DashboardLink = async () => {
     const user = await getUser() 

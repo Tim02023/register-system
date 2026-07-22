@@ -1,5 +1,6 @@
 'use client'
 import { signup } from '@/app/actions/auth'
+import { Button } from '@/components/ui/button'
 import { useActionState, useEffect } from 'react'
 import { toast } from 'sonner'
 
@@ -54,9 +55,9 @@ export function SignupForm() {
           </ul>
         </div>
       )}
-      <button type="submit" className="border p-3">
+      <Button type="submit" className="border p-3">
         Sign Up
-      </button>
+      </Button>
       {pending ? <p>Loading...</p> : null}
     </form>
   )
